@@ -118,12 +118,12 @@ def getPopFitness(source, target, population):
     allfitness = {}
     for chromosome in population:
         myfitness = fitness(multiFold(source, chromosome)[0][-1], target)
-        allfitness[chromosome] = myfitness
+        allfitness[tuple(chromosome)] = myfitness
     return allfitness
 
 
 def newGeneration(source, target, population, verbose=False):
-    basicfolds = getBasicfolds(source, target)
+    #basicfolds = getBasicfolds(source, target)
     popfitness = getPopFitness(source, target, population)
     bestcandidates = sorted(popfitness, key=popfitness.get, reverse=True)
     if verbose:
